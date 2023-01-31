@@ -1,15 +1,15 @@
-<h1 align="center">cargs</h1>
-<p align="center">A command line arguments parsing library for C</p>
+<h1 align="center">clog</h1>
+<p align="center">A logging library for C</p>
 
 <p align="center">
 	<a href="./LICENSE">
 		<img alt="License" src="https://img.shields.io/badge/license-GPL-blue?color=26d374"/>
 	</a>
-	<a href="https://github.com/LordOfTrident/cargs/issues">
-		<img alt="Issues" src="https://img.shields.io/github/issues/LordOfTrident/cargs?color=4f79e4"/>
+	<a href="https://github.com/LordOfTrident/clog/issues">
+		<img alt="Issues" src="https://img.shields.io/github/issues/LordOfTrident/clog?color=4f79e4"/>
 	</a>
-	<a href="https://github.com/LordOfTrident/cargs/pulls">
-		<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/LordOfTrident/cargs?color=4f79e4"/>
+	<a href="https://github.com/LordOfTrident/clog/pulls">
+		<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/LordOfTrident/clog?color=4f79e4"/>
 	</a>
 	<br><br><br>
 	<img width="75%" src="res/img.png"/>
