@@ -15,7 +15,7 @@
 	<img width="75%" src="res/img.png"/>
 </p>
 
-A simple single-header STB-style C library for logging, inspired by [log.c](https://github.com/rxi/log.c).
+A simple single-header [STB-style](https://github.com/nothings/stb) C library for logging, inspired by [log.c](https://github.com/rxi/log.c).
 
 ## Table of contents
 * [Simple example](#simple-example)
