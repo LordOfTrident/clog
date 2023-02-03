@@ -26,13 +26,13 @@ enum {
 void log_into(FILE *file);
 void log_set_flags(int flags);
 
-#define LOG_INFO(...)  log_info(__FILE__,  __LINE__, __VA_ARGS__)
-#define LOG_WARN(...)  log_warn(__FILE__,  __LINE__, __VA_ARGS__)
+#define LOG_INFO( ...) log_info( __FILE__, __LINE__, __VA_ARGS__)
+#define LOG_WARN( ...) log_warn( __FILE__, __LINE__, __VA_ARGS__)
 #define LOG_ERROR(...) log_error(__FILE__, __LINE__, __VA_ARGS__)
 #define LOG_FATAL(...) log_fatal(__FILE__, __LINE__, __VA_ARGS__)
 
-void log_info(const  char *path, size_t line, const char *fmt, ...);
-void log_warn(const  char *path, size_t line, const char *fmt, ...);
+void log_info( const char *path, size_t line, const char *fmt, ...);
+void log_warn( const char *path, size_t line, const char *fmt, ...);
 void log_error(const char *path, size_t line, const char *fmt, ...);
 void log_fatal(const char *path, size_t line, const char *fmt, ...);
 
@@ -62,8 +62,8 @@ const char *log_titles[] = {
 WORD log_colors[] = {
 	[CLOG_INFO]  = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	[CLOG_WARN]  = FOREGROUND_GREEN | FOREGROUND_RED  | FOREGROUND_INTENSITY,
-	[CLOG_ERROR] = FOREGROUND_RED | FOREGROUND_INTENSITY,
-	[CLOG_FATAL] = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+	[CLOG_ERROR] = FOREGROUND_RED   | FOREGROUND_INTENSITY,
+	[CLOG_FATAL] = FOREGROUND_RED   | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 };
 #else
 #	define CLOG_RESET_COLOR     "\x1b[0m"
