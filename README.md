@@ -39,11 +39,11 @@ int main(void) {
 
 ## Quickstart
 Just copy [`clog.h`](./clog.h) into your project and include it.
-[See the example](./examples/main.c) to see how to use the library.
+[See the example](./examples/log.c) to see how to use the library.
 
 To compile and run the example, run
 ```sh
-$ cc ./examples/main.c -o main
+$ cc ./examples/log.c -o log
 $ ./main
 ```
 
