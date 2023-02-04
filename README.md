@@ -1,6 +1,4 @@
 <h1 align="center">clog</h1>
-<p align="center">A logging library for C</p>
-
 <p align="center">
 	<a href="./LICENSE">
 		<img alt="License" src="https://img.shields.io/badge/license-GPL-blue?color=26d374"/>
@@ -11,8 +9,8 @@
 	<a href="https://github.com/LordOfTrident/clog/pulls">
 		<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/LordOfTrident/clog?color=4f79e4"/>
 	</a>
+	<img width="80%" src="res/thumbnail.png"/>
 	<br><br><br>
-	<img width="75%" src="res/img.png"/>
 </p>
 
 A simple single-header [STB-style](https://github.com/nothings/stb) C library for logging, inspired by [log.c](https://github.com/rxi/log.c).
@@ -36,6 +34,9 @@ int main(void) {
 	return 0;
 }
 ```
+Output
+
+<img width="85%" src="res/img.png"/>
 
 ## Quickstart
 Just copy [`clog.h`](./clog.h) into your project and include it.
