@@ -7,6 +7,10 @@
 #include <stdarg.h>  /* va_list, va_start, va_end, vsnprintf */
 #include <stdbool.h> /* bool, true, false */
 
+#define CLOG_VERSION_MAJOR 1
+#define CLOG_VERSION_MINOR 0
+#define CLOG_VERSION_PATCH 0
+
 #ifndef WIN32
 #	if defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
 #		define WIN32
