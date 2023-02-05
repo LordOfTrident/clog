@@ -1,3 +1,5 @@
+/* #define CLOG_IMPLEMENTATION */
+
 #ifndef CLOG_H_HEADER_GUARD
 #define CLOG_H_HEADER_GUARD
 
