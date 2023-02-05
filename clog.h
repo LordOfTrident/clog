@@ -51,7 +51,7 @@ enum {
 	CLOG_FATAL,
 };
 
-const char *log_titles[] = {
+static const char *log_titles[] = {
 	[CLOG_INFO]  = "INFO",
 	[CLOG_WARN]  = "WARN",
 	[CLOG_ERROR] = "ERROR",
@@ -63,7 +63,7 @@ const char *log_titles[] = {
 #	define CLOG_TIME_COLOR       FOREGROUND_INTENSITY
 #	define CLOG_HIGHLIGHT_COLOR (CLOG_RESET_COLOR | FOREGROUND_INTENSITY)
 
-WORD log_colors[] = {
+static WORD log_colors[] = {
 	[CLOG_INFO]  = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	[CLOG_WARN]  = FOREGROUND_GREEN | FOREGROUND_RED  | FOREGROUND_INTENSITY,
 	[CLOG_ERROR] = FOREGROUND_RED   | FOREGROUND_INTENSITY,
@@ -74,7 +74,7 @@ WORD log_colors[] = {
 #	define CLOG_TIME_COLOR      "\x1b[1;90m"
 #	define CLOG_HIGHLIGHT_COLOR "\x1b[1;97m"
 
-const char *log_colors[] = {
+static const char *log_colors[] = {
 	[CLOG_INFO]  = "\x1b[1;96m",
 	[CLOG_WARN]  = "\x1b[1;93m",
 	[CLOG_ERROR] = "\x1b[1;91m",
