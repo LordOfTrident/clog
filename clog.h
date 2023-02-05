@@ -1,4 +1,9 @@
-/* #define CLOG_IMPLEMENTATION */
+/*
+ * https://github.com/LordOfTrident/clog
+ *
+ * #define CLOG_IMPLEMENTATION
+ *
+ */
 
 #ifndef CLOG_H_HEADER_GUARD
 #define CLOG_H_HEADER_GUARD
