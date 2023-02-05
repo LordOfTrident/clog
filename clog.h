@@ -53,7 +53,7 @@ enum {
 	CLOG_FATAL,
 };
 
-static const char *log_titles[] = {
+static const char *_log_titles[] = {
 	[CLOG_INFO]  = "INFO",
 	[CLOG_WARN]  = "WARN",
 	[CLOG_ERROR] = "ERROR",
@@ -65,7 +65,7 @@ static const char *log_titles[] = {
 #	define CLOG_TIME_COLOR       FOREGROUND_INTENSITY
 #	define CLOG_HIGHLIGHT_COLOR (CLOG_RESET_COLOR | FOREGROUND_INTENSITY)
 
-static WORD log_colors[] = {
+static WORD _log_colors[] = {
 	[CLOG_INFO]  = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	[CLOG_WARN]  = FOREGROUND_GREEN | FOREGROUND_RED  | FOREGROUND_INTENSITY,
 	[CLOG_ERROR] = FOREGROUND_RED   | FOREGROUND_INTENSITY,
@@ -76,7 +76,7 @@ static WORD log_colors[] = {
 #	define CLOG_TIME_COLOR      "\x1b[1;90m"
 #	define CLOG_HIGHLIGHT_COLOR "\x1b[1;97m"
 
-static const char *log_colors[] = {
+static const char *_log_colors[] = {
 	[CLOG_INFO]  = "\x1b[1;96m",
 	[CLOG_WARN]  = "\x1b[1;93m",
 	[CLOG_ERROR] = "\x1b[1;91m",
@@ -84,39 +84,39 @@ static const char *log_colors[] = {
 };
 #endif
 
-FILE *log_file  = NULL;
-int   log_flags = LOG_NONE;
+static FILE *_log_file  = NULL;
+static int   _log_flags = LOG_NONE;
 
 void log_set_flags(int flags) {
-	log_flags = flags;
+	_log_flags = flags;
 }
 
 void log_into(FILE *file) {
-	log_file = file;
+	_log_file = file;
 }
 
 static void log_reset_color(void) {
-	if (log_file != stderr && log_file != stdout)
+	if (_log_file != stderr && _log_file != stdout)
 		return;
 
 #ifdef WIN32
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), CLOG_RESET_COLOR);
 #else
-	fprintf(log_file, "%s", CLOG_RESET_COLOR);
+	fprintf(_log_file, "%s", CLOG_RESET_COLOR);
 #endif
 }
 
 static void log_print_title(int type) {
 	log_reset_color();
 
-	if (log_file == stderr || log_file == stdout)
+	if (_log_file == stderr || _log_file == stdout)
 #ifdef WIN32
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), log_colors[type]);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), _log_colors[type]);
 #else
-		fprintf(log_file, "%s", log_colors[type]);
+		fprintf(_log_file, "%s", _log_colors[type]);
 #endif
 
-	fprintf(log_file, "[%s]", log_titles[type]);
+	fprintf(_log_file, "[%s]", _log_titles[type]);
 	log_reset_color();
 }
 
@@ -125,14 +125,14 @@ static void log_print_time(void) {
 	time(&raw);
 	struct tm *info = localtime(&raw);
 
-	if (log_file == stderr || log_file == stdout)
+	if (_log_file == stderr || _log_file == stdout)
 #ifdef WIN32
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), CLOG_TIME_COLOR);
 #else
-		fprintf(log_file, "%s", CLOG_TIME_COLOR);
+		fprintf(_log_file, "%s", CLOG_TIME_COLOR);
 #endif
 
-	fprintf(log_file, "%d:%d:%d", info->tm_hour, info->tm_min, info->tm_sec);
+	fprintf(_log_file, "%d:%d:%d", info->tm_hour, info->tm_min, info->tm_sec);
 	log_reset_color();
 }
 
@@ -140,26 +140,26 @@ static void log_print_loc(const char *path, size_t line) {
 #ifdef WIN32
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), CLOG_HIGHLIGHT_COLOR);
 #else
-	fprintf(log_file, "%s", CLOG_HIGHLIGHT_COLOR);
+	fprintf(_log_file, "%s", CLOG_HIGHLIGHT_COLOR);
 #endif
-	fprintf(log_file, " %s:%zu:", path, line);
+	fprintf(_log_file, " %s:%zu:", path, line);
 	log_reset_color();
 }
 
 static void log_template(int type, const char *msg, const char *path, size_t line) {
-	if (log_file == NULL)
-		log_file = stderr;
+	if (_log_file == NULL)
+		_log_file = stderr;
 
-	if (log_flags & LOG_TIME) {
+	if (_log_flags & LOG_TIME) {
 		log_print_time();
-		fprintf(log_file, " ");
+		fprintf(_log_file, " ");
 	}
 	log_print_title(type);
 
-	if (log_flags & LOG_LOC)
+	if (_log_flags & LOG_LOC)
 		log_print_loc(path, line);
 
-	fprintf(log_file, " %s\n", msg);
+	fprintf(_log_file, " %s\n", msg);
 }
 
 void log_info(const char *path, size_t line, const char *fmt, ...) {
