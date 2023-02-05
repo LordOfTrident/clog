@@ -45,7 +45,7 @@ Just copy [`clog.h`](./clog.h) into your project and include it.
 To compile and run the example, run
 ```sh
 $ cc ./examples/log.c -o log
-$ ./main
+$ ./log
 ```
 
 ## Bugs
