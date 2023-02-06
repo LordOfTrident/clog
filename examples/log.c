@@ -9,6 +9,7 @@ int main(void) {
 
 	LOG_INFO("Hello, world!");
 	LOG_WARN("I am a warning");
+	LOG_CUSTOM("HELLO", "Hello, i am a custom greeting!");
 	LOG_ERROR("Uh-oh, i am an error");
 	LOG_FATAL("Oh no, i am a fatal error"); /* LOG_FATAL also exits the program with EXIT_FAILURE */
 	LOG_INFO("This will not be printed");
