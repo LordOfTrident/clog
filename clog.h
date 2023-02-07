@@ -8,6 +8,10 @@
 #ifndef CLOG_H_HEADER_GUARD
 #define CLOG_H_HEADER_GUARD
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdio.h>   /* FILE, fprintf, stderr */
 #include <stdlib.h>  /* exit, EXIT_FAILURE */
 #include <time.h>    /* time_t, time, localtime */
@@ -15,7 +19,7 @@
 #include <stdbool.h> /* bool, true, false */
 
 #define CLOG_VERSION_MAJOR 1
-#define CLOG_VERSION_MINOR 1
+#define CLOG_VERSION_MINOR 2
 #define CLOG_VERSION_PATCH 0
 
 #ifndef WIN32
@@ -51,9 +55,17 @@ void log_fatal(const char *path, size_t line, const char *fmt, ...);
 
 void log_custom(const char *title, const char *path, size_t line, const char *fmt, ...);
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif
 
 #ifdef CLOG_IMPLEMENTATION
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 enum {
 	CLOG_COLOR_INFO = 0,
@@ -236,5 +248,9 @@ void log_custom(const char *title, const char *path, size_t line, const char *fm
 
 	log_template(CLOG_COLOR_INFO, title, buf, path, line);
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
