@@ -39,8 +39,8 @@ Output
 <img width="85%" src="res/img.png"/>
 
 ## Quickstart
-Just copy [`clog.h`](./clog.h) into your project and include it.
-[See the example](./examples/log.c) to see how to use the library.
+Just copy [`clog.h`](./clog.h) into your project and include it, or submodule this repository and
+include the header. [See the example](./examples/log.c) to see how to use the library.
 
 To compile and run the example, run
 ```sh
